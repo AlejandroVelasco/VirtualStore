@@ -50,7 +50,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             status INTEGER DEFAULT 0
         )"""
 
-
         db.execSQL(userTable)
         db.execSQL(itemTable)
         db.execSQL(cartTable)
@@ -60,9 +59,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int){
         //elimina tablas antiguar si existen y recrea las tablas nuevamente
-        db.execSQL("DROP TABLE IF EXISTS products")
+        db.execSQL("DROP TABLE IF EXISTS items")
         db.execSQL("DROP TABLE IF EXISTS users")
-        db.execSQL("DROP TABLE IF EXISTS cart")
+        db.execSQL("DROP TABLE IF EXISTS cartitems")
+        db.execSQL("DROP TABLE IF EXISTS orders")
         onCreate(db)
     }
 
